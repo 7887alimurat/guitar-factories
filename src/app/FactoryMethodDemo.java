@@ -27,6 +27,15 @@ public final class FactoryMethodDemo {
             System.out.println(guitar.play());
             System.out.println(makers[i].issueReceipt(models[i]));
         }
+        demonstrateValidation();
         System.out.println();
+    }
+
+    private static void demonstrateValidation() {
+        try {
+            new AcousticGuitarMaker().orderGuitar("  ");
+        } catch (IllegalArgumentException exception) {
+            System.out.println("Invalid order rejected: " + exception.getMessage());
+        }
     }
 }
